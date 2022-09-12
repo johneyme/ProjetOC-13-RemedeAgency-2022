@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import logoArgentBank from '../../assets/argentBankLogo.png';
+import './Nav.css';
 
 function Nav() {
-  const isConnected = true;
+  const isConnected = false;
 
   return (
     <nav className="main-nav">
@@ -17,12 +18,12 @@ function Nav() {
 
       {isConnected ? (
         <div>
-          <Link class="main-nav-item" to="/user">
-            <i class="fa fa-user-circle"></i>
+          <Link className="main-nav-item" to="/user">
+            <i className="fa fa-user-circle"></i>
             Tony
           </Link>
-          <Link class="main-nav-item" to="/">
-            <i class="fa fa-sign-out"></i>
+          <Link className="main-nav-item" to="/">
+            <i className="fa fa-sign-out"></i>
             Sign Out
           </Link>
         </div>

@@ -1,0 +1,35 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.main-nav-logo {
+  border: 1px solid rgba(128, 128, 128, 0.038);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.141);
+}
+
+.main-nav-logo-image {
+  max-width: 100%;
+  width: 200px;
+}
+
+.main-nav-item {
+  text-decoration: none;
+  margin-right: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: large;
+}
+
+.main-nav-item i {
+  margin-right: 10px;
+}
+
+.main-nav-item:hover {
+  text-decoration: underline;
+}

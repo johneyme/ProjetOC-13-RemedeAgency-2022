@@ -1,8 +1,9 @@
 import iconMoney from '../../assets/icon-money.png';
 import iconSecurity from '../../assets/icon-security.png';
 import iconChat from '../../assets/icon-chat.png';
+import './Home.css';
 
-function Index() {
+function Home() {
   return (
     <div className="index-page">
       <main>
@@ -54,4 +55,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Home;
