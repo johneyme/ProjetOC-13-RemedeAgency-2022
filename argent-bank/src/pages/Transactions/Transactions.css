@@ -1,0 +1,17 @@
+.transaction {
+  padding: 5% 0 7% 0;
+}
+
+.dataHead {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 25px;
+  font-weight: bold;
+  margin: 0 auto;
+  color: white;
+}
+
+.dataLineItem {
+  font-size: 1rem;
+}

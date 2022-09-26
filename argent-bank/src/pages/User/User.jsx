@@ -1,47 +1,94 @@
 import './User.css';
+import React from 'react';
+import Account from '../../components/Account/Account';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../utils/Redux/userSlice';
+import { useState } from 'react';
+
+import { dataAccount } from '../../data/dataAccount';
+
+import { api } from '../../utils/axios';
+
+/** @function create the profile page based on the user's info received from the database.
+ *
+ * @returns (<User/>)
+ */
 
 function User() {
+  const dispatch = useDispatch();
+  const { firstName, lastName } = useSelector((state) => state.user);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const [newFirstname, setNewFirstname] = useState(firstName);
+  const [newLastname, setNewLastname] = useState(lastName);
+
+  //save data editor
+  const save = async () => {
+    if (firstName.trim() === '' && lastName.trim() === '') {
+      return;
+    }
+
+    const response = await api.updateProfile(newFirstname, newLastname);
+    dispatch(userActions.setUserInfos(response.body));
+    setIsEdit(false);
+  };
   return (
     <main className="user-page bg-dark">
-      <div className="user-page__header">
-        <h1>
-          Welcome back
-          <br />
-          Tony Jarvis!
-        </h1>
-        <button className="edit-button">Edit Name</button>
+      {isEdit ? (
+        <section className="user-page__header">
+          <h1>
+            Welcome back
+            <br /> {firstName} {lastName}!
+          </h1>
+
+          <div className="edit-section">
+            <input
+              type="text"
+              className="firstNameInput"
+              defaultValue={firstName}
+              onChange={(e) => setNewFirstname(e.target.value)}
+            />
+            <input
+              type="text"
+              className="lastNameInput"
+              defaultValue={lastName}
+              onChange={(e) => setNewLastname(e.target.value)}
+            />
+          </div>
+          <div className="edit-section">
+            <button className="editor-button" onClick={save}>
+              Save
+            </button>
+            <button className="editor-button" onClick={() => setIsEdit(false)}>
+              Cancel
+            </button>
+          </div>
+        </section>
+      ) : (
+        <div className="user-page__header">
+          <h1>
+            Welcome back
+            <br />
+            {firstName + ' ' + lastName} !
+          </h1>
+          <button className="edit-button" onClick={() => setIsEdit(true)}>
+            Edit Name
+          </button>
+        </div>
+      )}
+
+      <div className="operation-grid">
+        {dataAccount.map((account, index) => (
+          <Account
+            key={index}
+            id={account.id}
+            title={account.title}
+            amount={account.amount}
+            description={account.description}
+          />
+        ))}
       </div>
-      <h2 className="sr-only">Accounts</h2>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-          <p className="account-amount">$2,082.79</p>
-          <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Savings (x6712)</h3>
-          <p className="account-amount">$10,928.42</p>
-          <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
-          <p className="account-amount">$184.30</p>
-          <p className="account-amount-description">Current Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
     </main>
   );
 }

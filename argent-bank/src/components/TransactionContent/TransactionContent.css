@@ -1,0 +1,58 @@
+.dataLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  width: 90%;
+  height: 90px;
+  color: #000000;
+  border: 1px #000000 solid;
+  margin: 0 auto -10px auto;
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+#arrow {
+  width: 5%;
+}
+
+#arrow:hover,
+.pencil:hover {
+  cursor: pointer;
+}
+
+#date {
+  width: 25%;
+}
+
+#descr {
+  width: 30%;
+}
+
+#amount,
+#balance {
+  width: 20%;
+}
+
+.moreInfo {
+  display: block;
+  background: white;
+  color: black;
+  text-align: left;
+  padding-right: 20px;
+  padding-left: 10px;
+  margin: 0 auto -10px auto;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  width: 90%;
+  overflow: hidden;
+  color: black;
+  -webkit-animation-name: collapse;
+  animation-name: collapse;
+  -webkit-animation-duration: 600ms;
+  animation-duration: 600ms;
+}
+
+.info {
+  margin-left: 10%;
+}

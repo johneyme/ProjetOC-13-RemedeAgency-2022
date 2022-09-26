@@ -1,7 +1,12 @@
+import './Home.css';
 import iconMoney from '../../assets/icon-money.png';
 import iconSecurity from '../../assets/icon-security.png';
 import iconChat from '../../assets/icon-chat.png';
-import './Home.css';
+
+/** @function create the home page.
+ *
+ * @returns (<Home/>)
+ */
 
 function Home() {
   return (
