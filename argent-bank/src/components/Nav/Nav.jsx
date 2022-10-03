@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import logoArgentBank from '../../assets/argentBankLogo.png';
 import './Nav.css';
+import logoArgentBank from '../../assets/argentBankLogo.png';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../utils/Redux/userSlice';
 
 /** @function create the header component

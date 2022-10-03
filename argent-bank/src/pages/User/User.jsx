@@ -1,14 +1,14 @@
 import './User.css';
+
 import React from 'react';
-import Account from '../../components/Account/Account';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { userActions } from '../../utils/Redux/userSlice';
-import { useState } from 'react';
 
-import { dataAccount } from '../../data/dataAccount';
-
+import Account from '../../components/Account/Account';
 import { api } from '../../utils/axios';
+import { dataAccount } from '../../data/dataAccount';
+import { userActions } from '../../utils/Redux/userSlice';
 
 /** @function create the profile page based on the user's info received from the database.
  *

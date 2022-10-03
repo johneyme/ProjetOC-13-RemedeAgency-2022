@@ -1,10 +1,8 @@
 import axios from 'axios';
-import { dataTransactionsContent } from '../data/dataTransactions';
-
-axios.defaults.baseURL = 'http://localhost:3001/api/v1';
 
 //instance replace the value default for the token
 export const instance = axios.create({
+  baseURL: 'http://localhost:3001/api/v1',
   headers: {
     common: {
       Authorization: 'AUTH_TOKEN_FROM_INSTANCE',
@@ -18,7 +16,7 @@ export const api = {
    * @returns
    */
 
-  getProfile: () => {
+  getProfile: async () => {
     return instance
       .post('/user/profile')
 
@@ -43,7 +41,7 @@ export const api = {
         .then((response) => response.data)
 
         .catch((error) => {
-          console.log(error.response.data);
+          console.error(error.response.data.message);
         })
     );
   },
@@ -65,10 +63,5 @@ export const api = {
         })
         .then((response) => response.data)
     );
-  },
-
-  //Mockdatas
-  getTransactionsByAccount: (id) => {
-    return dataTransactionsContent;
   },
 };

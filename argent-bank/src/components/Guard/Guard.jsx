@@ -1,6 +1,6 @@
 import React from 'react';
-import { Outlet, Navigate } from 'react-router';
 import { useSelector } from 'react-redux';
+import { Outlet, Navigate } from 'react-router';
 
 /** @function protect user authentication
  *

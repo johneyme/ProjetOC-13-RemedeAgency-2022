@@ -1,11 +1,12 @@
 import './SignIn.css';
+
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { userActions } from '../../utils/Redux/userSlice';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { api } from '../../utils/axios';
+import { userActions } from '../../utils/Redux/userSlice';
 
 /** @function manage the authentication of the user by communicating
  * with the database in order to verify the login infos (email/password).
@@ -23,7 +24,7 @@ function SignIn() {
   const navigate = useNavigate();
 
   // Validate Form
-  const onSubmit = (data) => {
+  function onSubmit(data) {
     api
       .login(data.username, data.password)
       .then((user) => {
@@ -33,8 +34,8 @@ function SignIn() {
           navigate('/profile');
         });
       })
-      .catch((error) => setLoginError(error.message));
-  };
+      .catch(setLoginError('Un problème est survenue'));
+  }
 
   return (
     <main className="sign-in-page bg-dark">
