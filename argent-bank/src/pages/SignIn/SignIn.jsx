@@ -34,7 +34,9 @@ function SignIn() {
           navigate('/profile');
         });
       })
-      .catch(setLoginError('Un problème est survenue'));
+      .catch((error) => {
+        setLoginError(error.response.data.message);
+      });
   }
 
   return (

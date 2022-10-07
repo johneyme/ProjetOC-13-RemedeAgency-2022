@@ -39,10 +39,6 @@ export const api = {
           password,
         })
         .then((response) => response.data)
-
-        .catch((error) => {
-          console.error(error.response.data.message);
-        })
     );
   },
 
